@@ -1,24 +1,5 @@
 import java.util.Scanner;
 
-public class Hanan {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        BankAccount b1 = new BankAccount();
-
-        System.out.println("Enter  amount to deposit: ");
-        double deposit = sc.nextDouble();
-        b1.deposit(deposit);
-
-        System.out.println("Enter amount to withdraw: ");
-        double withdraw = sc.nextDouble();
-        b1.withDraw(withdraw);
-
-        sc.close();
-
-    }
-}
-
 class BankAccount {
 
     public String name;
@@ -32,23 +13,23 @@ class BankAccount {
     }
 
     public void deposit(double amount) {
-        if (checkpin()) {
-            balance += amount;
-        }
+
+        balance += amount;
+
     }
 
     public void withDraw(double withdraw) {
-        if (checkpin()) {
-            System.out.println("Enter amount Withdraw: ");
-            balance -= withdraw;
-        }
+
+        System.out.println("Enter amount Withdraw: ");
+        balance -= withdraw;
+
     }
 
     public void display() {
-        if (checkpin()) {
-            System.out.println("Account number: " + accountNo);
-            System.out.println("Balance: " + balance);
-        }
+
+        System.out.println("Account number: " + accountNo);
+        System.out.println("Balance: " + balance);
+
     }
 
     public boolean checkpin() {
@@ -67,6 +48,7 @@ class BankAccount {
             } else {
                 --chance;
                 System.out.println(chance + " more chances left");
+                System.out.println("Retry: ");
                 checkpin = input.nextInt();
 
             }
@@ -74,6 +56,28 @@ class BankAccount {
         }
         input.close();
         return false;
+    }
+}
+
+public class Hanan {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        BankAccount b1 = new BankAccount();
+
+        System.out.println("===========Welcomr to ATM===========");
+        if (b1.checkpin()) {
+
+            System.out.println("Enter  amount to deposit: ");
+            double deposit = sc.nextDouble();
+            b1.deposit(deposit);
+
+            System.out.println("Enter amount to withdraw: ");
+            double withdraw = sc.nextDouble();
+            b1.withDraw(withdraw);
+        }
+        sc.close();
+
     }
 }
 
