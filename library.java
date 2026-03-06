@@ -30,7 +30,7 @@ class Book {
     private String ISBN;
 
     public Book() {
-
+        
     }
 
     public void borrow() {
