@@ -13,13 +13,13 @@ public class library {
         for (int i = 0; i < books.length; i++) {
             // input book title
             System.out.print("\nEnter book " + (i + 1) + " title: ");
-            books[i].title = sc.nextLine();
+            books[i].setTitle(sc.nextLine());
 
             // input book author & nationallity
             System.out.print("Enter book " + (i + 1) + " author: ");
-            books[i].auth.author = sc.nextLine();
+            books[i].auth.setauthor(sc.nextLine());
             System.out.print("Enter book author nationallity: ");
-            books[i].auth.nationallity = sc.nextLine();
+            books[i].auth.setNationallity(sc.nextLine());
 
             // input book price
             System.out.print("Enter book " + (i + 1) + " price: ");
@@ -43,7 +43,7 @@ public class library {
 
 class Book {
 
-    public String title;
+    private String title;
     private double price;
 
     public Author auth;// declaring author class as my feild
@@ -52,17 +52,24 @@ class Book {
         auth = new Author();// creating object of feild class
     }
 
-    public void setauthor(String author, String nationallity) {
-        this.auth.author = author;// this.auth.author mean this call public feild auth(which is itself class) and
-                                  // auth.author call their public feild author from auth class
-        this.auth.nationallity = nationallity;
+    public void setTitle(String title) {
+        if (title == null || title.trim().isEmpty()) {
+            System.out.println("Enter valid input");
+        } else {
+            this.title = title;
+        }
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setPrice(double price) {
-        if (price >= 0) {
+        if (price > 0) {
             this.price = price;
+        } else {
+            System.out.println("Invalid price! Must be greater than 0.");
         }
-        return;
     }
 
     public double getPrice() {
@@ -70,33 +77,32 @@ class Book {
     }
 
     public void setNationallity(String n) {
-        this.auth.nationallity = n;
+        this.auth.setNationallity(n);
     }
 
     public String getNationallity() {
-        return this.auth.nationallity;
+        return this.auth.getNationallity();
     }
 
     public void displayInfo() {
         // Title: Clean Code | Price: $45.0 | Author: Robert Martin (American)
-
-        System.out
-                .println("Title: " + title + " | Price: " + price + " | Author: " + auth.author + " ("
-                        + this.auth.nationallity
-                        + ")");
+        System.out.println("Title: " + title + " | Price: " + price + " | Author: " + auth.getauthor() + " ("
+                + this.auth.getNationallity() + ")");
     }
 
     public static String expensive(Book books[]) {
-        double expensive = books[0].getPrice();// it assingn 1st book price to expensive and then compare with other
+        if (books == null || books.length == 0 || books[0] == null) {// null check to prevent crash
+            return "No books available.";
+        }
+        double expensive = books[0].getPrice();// it assigns 1st book price to expensive and then compare with other
         int index = 0;
-        ;
         for (int i = 0; i < 5; i++) {
-            if (books[i].price > expensive) {
-                expensive = books[i].price;
+            if (books[i].getPrice() > expensive) {// using getter instead of direct field access
+                expensive = books[i].getPrice();
                 index = i;
             }
         }
-        return books[index].title + " cost $" + expensive;
+        return books[index].getTitle() + " cost $" + expensive;
     }
 }
 
@@ -104,6 +110,35 @@ class Book {
 // mean Static methods cannot directly access instance variables without an
 // object.
 class Author {
-    public String author;
-    public String nationallity;
+    private String author;
+    private String nationallity;
+
+    public void setauthor(String author) {
+        if (author == null || author.trim().isEmpty()) {// it is checking that author is null if it
+                                                        // is false then it goes to second condition and in
+                                                        // this condition author.trim().isEmpty()--->
+                                                        // .trim() clears the spaces before and after of
+                                                        // string and isEmpty will return true or false
+                                                        // depends upon string behaviour
+            System.out.println("Enter valid input");
+        } else {
+            this.author = author;
+        }
+    }
+
+    public String getauthor() {
+        return author;
+    }
+
+    public void setNationallity(String nationallity) {
+        if (nationallity == null || nationallity.trim().isEmpty()) {
+            System.out.println("Enter valid input");
+        } else {
+            this.nationallity = nationallity;
+        }
+    }
+
+    public String getNationallity() {
+        return nationallity;
+    }
 }
