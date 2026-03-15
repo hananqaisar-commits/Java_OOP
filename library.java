@@ -53,7 +53,12 @@ class Book {
     }
 
     public void setTitle(String title) {
-        if (title == null || title.trim().isEmpty()) {
+        if (title == null || title.trim().isEmpty()) {// it is checking that author is null if it
+                                                      // is false then it goes to second condition and in
+                                                      // this condition author.trim().isEmpty()--->
+                                                      // .trim() clears the spaces before and after of
+                                                      // string and isEmpty will return true or false
+                                                      // depends upon string behaviour
             System.out.println("Enter valid input");
         } else {
             this.title = title;
@@ -114,12 +119,7 @@ class Author {
     private String nationallity;
 
     public void setauthor(String author) {
-        if (author == null || author.trim().isEmpty()) {// it is checking that author is null if it
-                                                        // is false then it goes to second condition and in
-                                                        // this condition author.trim().isEmpty()--->
-                                                        // .trim() clears the spaces before and after of
-                                                        // string and isEmpty will return true or false
-                                                        // depends upon string behaviour
+        if (author == null || author.trim().isEmpty()) {
             System.out.println("Enter valid input");
         } else {
             this.author = author;
