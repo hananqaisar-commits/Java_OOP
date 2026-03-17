@@ -4,19 +4,23 @@ import java.util.ArrayList;
 
 class Store {
     private String name, location;
-    private static int countMobile;
     ArrayList<Phone> phones;
+    private static int countMobile;
+    public int count;
 
     public Store(String name, String location) {
+
+        this.count = 0;// Store have 0 mobile by default
         this.name = name;
         this.location = location;
         phones = new ArrayList<>();// Now each phones arraylist belongs to each Store
+
     }
 
     public void addPhone(Phone p) {
-
-        phones.add(p);
-        ++countMobile;
+        ++count; // increment this individual store count
+        phones.add(p); // first add phone
+        ++countMobile; // increment total across all stores
     }
 
     public static void setCountMobile(int countMobile) {
@@ -38,8 +42,12 @@ class Store {
 
     }
 
+    public void count() {
+        System.out.println("Total mobile: " + count);
+    }
+
     public static void totalmobile() {
-        System.out.println("\nTotal Mobiles available in store: " + Store.getCountMobile());
+        System.out.println("\nTotal Mobiles available in all stores: " + Store.getCountMobile());
     }
 
 }

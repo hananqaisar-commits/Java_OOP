@@ -18,7 +18,6 @@ public class Main {
         Phone Realme = new Phone(Redmi3, redmi);
 
         MobileOyee.display();
-
         MobileOyee.addPhone(Samsung);
         MobileOyee.addPhone(Oppo);
         MobileOyee.addPhone(Apple);
@@ -28,8 +27,17 @@ public class Main {
         MobileOyee.addPhone(Redmi3);
         MobileOyee.addPhone(Redmi4);
         MobileOyee.addPhone(Realme);
+        MobileOyee.count();// give me mobile in this store
 
-        System.out.println(MobileOyee.phones);// it will print the phones of mobileoyee store
-        Store.totalmobile();// give total mobile phones in store
+        Store Mobile_World = new Store("Mobile World", "USA");
+        Mobile_World.display();
+        Mobile_World.addPhone(Apple);
+        Mobile_World.addPhone(Apple);
+        Mobile_World.addPhone(Redmi1);
+        System.out.println(Mobile_World.phones);
+        Mobile_World.count();// give me mobile count in thos store
+
+        Store.totalmobile();// Phones in all stores
+
     }
 }
