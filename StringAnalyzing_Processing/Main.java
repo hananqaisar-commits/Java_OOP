@@ -11,6 +11,7 @@ public class Main {
         s1.input(order);
         s1.printReverse();
         System.out.println("\nVowels : " + s1.countVowels());
+        System.out.println(s1.isPalindrome());
 
         sc.close();
     }
@@ -43,5 +44,18 @@ class StringAnalyzer {
 
         }
         return count;
+    }
+
+    public boolean isPalindrome() {
+        int j = word.length;
+
+        for (int i = 0; i < word.length; i++) {
+            if (word[i].equalsIgnoreCase(word[j - 1])) {
+                j--;
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 }
