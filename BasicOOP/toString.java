@@ -24,11 +24,18 @@ public class toString {
         String upper = name.toUpperCase();
         char characterAt = name.charAt(3);
         int indexOf = name.indexOf("it");
+        String trimName = name.trim();// it can remmove spaces from beggning and ends
+        boolean startsWith = name.startsWith("Han");// true bcz it look good
+        boolean endsWith = name.startsWith("e");// return false bcz last is space
 
         System.out.println(lower);
         System.out.println(upper);
         System.out.println(characterAt);
         System.out.println(indexOf);
+        System.out.println(trimName);
+        System.out.println(endsWith);
+        System.out.println(startsWith);
+        System.out.println(endsWith);
 
     }
 }
