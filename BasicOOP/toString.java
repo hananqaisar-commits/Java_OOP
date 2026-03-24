@@ -16,6 +16,20 @@ public class toString {
         System.out.print("Now 2nd Way: \n\t" + n1);// 2nd situation
         System.out.print("\n\t");
         System.out.print(n1.toString());// 3rd waay
+        System.out.println("\n");
+
+        // now Methods for string
+        String name = "Hanan QAIsAr, Its me ";
+        String lower = name.toLowerCase();
+        String upper = name.toUpperCase();
+        char characterAt = name.charAt(3);
+        int indexOf = name.indexOf("it");
+
+        System.out.println(lower);
+        System.out.println(upper);
+        System.out.println(characterAt);
+        System.out.println(indexOf);
+
     }
 }
 
