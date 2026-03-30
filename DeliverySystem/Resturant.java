@@ -6,10 +6,8 @@ class Resturant {
     private double dishRating;
     private String Resturantname;
 
-    public Resturant(Menuitem menu, String cityName, double dishRating, String Resturantname) {
-        this.Resturantname = Resturantname;
-        this.dishRating = dishRating;
-        this.cityName = cityName;
+    public Resturant() {
+
     }
 
     public Resturant(String cityName, double dishRating, String Resturantname) {
@@ -55,9 +53,15 @@ class Resturant {
         return Resturantname;
     }
 
+    @Override
     public String toString() {
-        return getResturantname() + "(" + getCityName() + ") Dish: " + menu.getName() + " price: "
-                + menu.getPrice() + " Rating: "
-                + getDishRating() + " Category: " + menu.getCategory();
+        String result = "";
+        for (Menuitem menuitem : menu) {
+            result += getResturantname() + "(" + getCityName() + ") Dish: ";
+            result += menuitem.getName() + " price: "// += bcz string is immutable a new string is returned in result
+                    + menuitem.getPrice() + " Rating: "
+                    + getDishRating() + " Category: " + menuitem.getCategory() + "\n";
+        }
+        return result;
     }
 }
