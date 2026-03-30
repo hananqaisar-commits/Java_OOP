@@ -1,16 +1,25 @@
-package Java_OOP.DeliverySystem;
-
-import java.util.Scanner;
 
 class Menuitem {
     private String name;
     private String category;
-    private float price;
+    private double price;
 
     public Menuitem() {
         name = "Unknown";
         category = "Unknown";
         price = 0.0;
+    }
+
+    public Menuitem(String name, String category, double price) {
+        this.category = category;
+        this.name = name;
+        this.price = price;
+    }
+
+    public Menuitem(Menuitem other) {
+        this.category = other.category;
+        this.name = other.name;
+        this.price = other.price;
     }
 
     public void setCategory(String category) {
@@ -29,7 +38,7 @@ class Menuitem {
         }
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         if (price == 0.0) {
             System.out.println("Invalid");
         } else {
@@ -37,7 +46,7 @@ class Menuitem {
         }
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -48,4 +57,5 @@ class Menuitem {
     public String getName() {
         return name;
     }
+
 }
