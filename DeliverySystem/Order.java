@@ -6,10 +6,17 @@ class Order {
     private double totalprice;
     ArrayList<Menuitem> items = new ArrayList<>();
 
-    public Order(String CustomerName, String items) {
+    public Order(String CustomerName) {
         {
             this.CustomerName = CustomerName;
-            
+            ++orderid;
+        }
+    }
+
+    public Order(String CustomerName, Menuitem items) {
+        {
+            this.CustomerName = CustomerName;
+            this.items.add(items);
             ++orderid;
         }
     }
@@ -22,16 +29,20 @@ class Order {
         }
     }
 
+    public static int getOrderid() {
+        return orderid;
+    }
+
     public String getCustomerName() {
         return CustomerName;
     }
 
-    public void setItems(ArrayList<Menuitem> items) {
+    public void setItems(Menuitem name) {
         if (items == null) {
             System.out.println("No item is selected");
 
         } else {
-            this.items = items;
+            items.add(name);
         }
     }
 
@@ -50,5 +61,11 @@ class Order {
 
     public double getTotalprice() {
         return totalprice;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("CustomerName: %-10s\nitem %d: %s\nPrice: %s", getCustomerName(), getOrderid(),
+                getItems(), getTotalprice());
     }
 }
