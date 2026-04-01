@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 class Student {
-    static String universityName = "Comsat University";
-    static int studentCount = 0;
-    public String name;
+    protected static String universityName = "Comsat University";
+    protected static int studentCount = 0;
+    private String name;
 
-    int rollNo;
-    double marks;
+    private int rollNo;
+    private double marks;
     final int max = 100;
 
     Student(String name, int rollNo, double marks) {
@@ -14,6 +14,22 @@ class Student {
         this.rollNo = rollNo;
         this.marks = marks;
         studentCount++;
+    }
+
+    public void setMarks(double marks) {
+        this.marks = marks;
+    }
+
+    public double getMarks() {
+        return marks;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     void displayStudentInfo() {
