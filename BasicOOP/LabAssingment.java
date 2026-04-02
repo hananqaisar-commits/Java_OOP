@@ -18,7 +18,12 @@ class Student {
     }
 
     private void setBalance(int balance) {
-        this.balance = balance;
+        if (balance < 0) {
+            System.out.println("Invalid");
+
+        } else {
+            this.balance = balance;
+        }
     }
 
     public int getBalance() {

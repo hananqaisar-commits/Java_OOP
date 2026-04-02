@@ -42,6 +42,6 @@ public class Arraylist {
         for (double i : f1) {// enhanced for loop to print all index of arraylist
             System.out.println("Number:" + i);
         }
-
+        input.close();
     }
 }

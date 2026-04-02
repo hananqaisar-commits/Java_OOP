@@ -37,11 +37,3 @@ class Book {
         System.out.println("Book: " + title);
     }
 }
-
-// Exercise 1: Book Copy Constructor
-// Create a Book class with fields: title (String), price (double), and author
-// (Author). The Author class has name (String) and email (String).
-// • Tasks:
-// • Write a copy constructor for Author
-// • Write a deep copy constructor for Book
-// • Demonstrate that modifying the copy does not affect the original
