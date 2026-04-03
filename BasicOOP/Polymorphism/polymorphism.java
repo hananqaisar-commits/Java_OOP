@@ -5,7 +5,7 @@ public class polymorphism {
         Scanner sc = new Scanner(System.in);
 
         overLoading p1 = new overLoading();
-        System.err.println(p1.add(50.354, 45.78));
+        System.out.println(p1.add(50.354, 45.78));
 
         Animal a1 = new Dog();
         Animal a2 = new Parrot();

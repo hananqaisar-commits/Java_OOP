@@ -67,12 +67,3 @@ class Leptop extends Computer {
     }
 
 }
-// Write a base class Computer that contains data members of wordsize(in bits),
-// memorysize (in megabytes),
-// storagesize (in megabytes) and speed (in megahertz). Derive a Laptop class
-// that is a kind of computer but
-// also specifies the object’s length, width, height, and weight. Member
-// functions for both classes should
-// include a default constructor, a constructor to inialize all components and a
-// function to display data
-// members.
