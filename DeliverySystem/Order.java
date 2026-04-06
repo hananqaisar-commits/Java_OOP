@@ -4,21 +4,18 @@ class Order {
     private String CustomerName;
     private static int orderid;
     private double totalprice;
-    ArrayList<Menuitem> items = new ArrayList<>();
+    ArrayList<Menuitem> items;
 
     public Order(String CustomerName) {
         {
+            this.items = new ArrayList<>();
             this.CustomerName = CustomerName;
             ++orderid;
         }
     }
 
-    public Order(String CustomerName, Menuitem items) {
-        {
-            this.CustomerName = CustomerName;
-            this.items.add(items);
-            ++orderid;
-        }
+    public void addOrder(Menuitem item) {
+        items.add(item);
     }
 
     public void setCustomerName(String customerName) {
@@ -63,9 +60,17 @@ class Order {
         return totalprice;
     }
 
+    public void display() {
+        double total = 0.0;
+        for (Menuitem m : items) {
+            System.out.println(m.getName() + " ");
+            total += m.getPrice();
+        }
+        System.out.println("\nTotal Price: " + total);
+    }
+
     @Override
     public String toString() {
-        return String.format("CustomerName: %-10s\nitem %d: %s\nPrice: %s", getCustomerName(), getOrderid(),
-                getItems(), getTotalprice());
+        return String.format("CustomerName: %-10s\nitem %d:", getCustomerName(), getOrderid());
     }
 }

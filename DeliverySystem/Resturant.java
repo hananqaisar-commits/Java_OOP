@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 class Resturant {
-    ArrayList<Menuitem> menu = new ArrayList<>();
+    ArrayList<Menuitem> menu;
     private String cityName;
     private double dishRating;
     private String Resturantname;
@@ -12,6 +12,7 @@ class Resturant {
 
     public Resturant(String cityName, double dishRating, String Resturantname) {
 
+        this.menu = new ArrayList<>();
         this.Resturantname = Resturantname;
         this.dishRating = dishRating;
         this.cityName = cityName;
@@ -37,7 +38,7 @@ class Resturant {
         return dishRating;
     }
 
-    public void setMenu(Menuitem menu) {
+    public void addMenu(Menuitem menu) {
         this.menu.add(menu);
     }
 
