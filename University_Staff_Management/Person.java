@@ -6,7 +6,7 @@ class Person {
     public static int count;
 
     public Person(String name, int age) {
-        ++count;
+        // Person.count();
         this.name = name;
         this.age = age;
     }
@@ -35,13 +35,14 @@ class Person {
         return name;
     }
 
-    public void count() {
-        System.out.print("---Staff " + count + "---\n");
+    public static void count() {
+        System.out.print("---Staff " + ++count + "---\n");
+
     }
 
     @Override
     public String toString() {
-        count();
+
         return String.format("Name: %s | Age: %2d \n", getName(), getAge());
     }
 }

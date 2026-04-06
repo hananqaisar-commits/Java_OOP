@@ -3,7 +3,7 @@
 
 # Bash file
 *.sh
-
+*.md
 # Output folders
 out/
 bin/

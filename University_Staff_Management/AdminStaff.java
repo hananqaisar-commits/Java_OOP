@@ -6,6 +6,7 @@ public class AdminStaff extends Employee {
 
     public AdminStaff(String name, int age, String id, double baseSalary, String role, int overtimeHours) {
         super(name, age, id, baseSalary);
+
         this.role = role;
         this.overtimeHours = overtimeHours;
     }
