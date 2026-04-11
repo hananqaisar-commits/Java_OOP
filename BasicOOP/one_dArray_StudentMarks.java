@@ -49,7 +49,7 @@ class Input_Output {
     }
 
     public int highest(int[] mark) {
-        int highest = 0;
+        int highest = mark[0];
         for (int i = 0; i < mark.length; i++) {
             if (mark[i] > highest) {
                 highest = mark[i];
@@ -60,7 +60,7 @@ class Input_Output {
     }
 
     public int lowest(int[] mark) {
-        int lowest = 1111111111;
+        int lowest = Integer.MAX_VALUE;
         for (int i = 0; i < mark.length; i++) {
             if (mark[i] < lowest) {
                 lowest = mark[i];

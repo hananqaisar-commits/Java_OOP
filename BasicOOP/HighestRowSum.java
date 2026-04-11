@@ -17,7 +17,7 @@ public class HighestRowSum {
 
         sc.close();
 
-        int MaxSum = -1000000000;
+        int MaxSum = Integer.MIN_VALUE;
         int maxRow = 0;
         for (int i = 0; i < array.length; i++) {
 

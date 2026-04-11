@@ -89,8 +89,18 @@ class College {
             return false;
         }
         College other = (College) obj;
-        return this.clgcode == other.clgcode && (this.clgName == null ? other.clgName == null
-                : this.clgName.equals(other.clgName));
+        if (this.clgcode != other.clgcode)
+            return false;
+        if (this.clgName == null && other.clgName != null)
+            return false;
+        if (this.clgName != null && !this.clgName.equals(other.clgName))
+            return false;
+
+        return true;
+
+        // this.clgcode == other.clgcode && (this.clgName == null ? other.clgName ==
+        // null
+        // : this.clgName.equals(other.clgName));
 
         // 1. Focous on operator precedence
 

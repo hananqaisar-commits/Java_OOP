@@ -10,6 +10,8 @@ public class CopyConstructor {
         Book b3 = b2;
         b3.title = "C++";
         System.out.println("Now b2 title changes to: " + b2.title);
+        System.out.println(b3);
+        System.out.println(b2);
         System.out.println("This is problem in shallow copy constructor");
 
         sc.close();
@@ -34,6 +36,7 @@ class Book {
 
     public void print() {
         System.out.println("Book is printing");
-        System.out.println("Book: " + title);
+        System.out.println("Price: " + this.price);
+        System.out.println("Book: " + this.title);
     }
 }

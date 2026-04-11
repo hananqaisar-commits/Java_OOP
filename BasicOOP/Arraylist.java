@@ -8,7 +8,8 @@ public class Arraylist {
         ArrayList<String> a1 = new ArrayList<>();// this is called arraylist
         // 1.Arraylist stored in non continuous memory
         // 2.This array can easily modify or add
-        // 3.Integer,Float,String,Character,Boolean
+        // 3.Integer,Float,String,Character,Boolean All of these are wrapper classes in
+        // java
 
         a1.add("Qaisar");// add mean append
         a1.add("Abbas");
@@ -42,6 +43,14 @@ public class Arraylist {
         for (double i : f1) {// enhanced for loop to print all index of arraylist
             System.out.println("Number:" + i);
         }
+
+        // string arrayList
+        ArrayList<String> s1 = new ArrayList<>();
+        s1.add("Coder");
+        s1.add("Enginner");
+        s1.set(0, "Programmer");
+        s1.remove("Coder");
+        System.out.println(s1);
         input.close();
     }
 }
