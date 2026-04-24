@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 class Playlist {
     private String playlistName;
-    ArrayList<Media> items;
+    static ArrayList<Media> items;
 
     public Playlist(String playlistName) {
         this.playlistName = playlistName;
@@ -14,11 +14,17 @@ class Playlist {
     }
 
     public void addItems(Media other) {
-        this.items.add(other);
+        if (other instanceof Song) {
+            Media s = (Song) other;
+            items.add(s);
+        } else if (other instanceof PodcastEp) {
+            Media p = (PodcastEp) other;
+            items.add(p);
+        }
     }
 
     public void removeItems(Media other) {
-        this.items.remove(other);
+        items.remove(other);
     }
 
     public int getSize(Playlist other) {

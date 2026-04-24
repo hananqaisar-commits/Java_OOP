@@ -17,6 +17,6 @@ class Song extends Media {
     @Override
     public void play() {
         super.play();
-        System.out.printf("Playing Song:%s by %s [%s]", getTitle(), getArtist(), getGenre());
+        System.out.printf("Playing Song:%s by %s [%s]\n", getTitle(), getArtist(), getGenre());
     }
 }

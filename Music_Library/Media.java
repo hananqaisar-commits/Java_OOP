@@ -1,8 +1,8 @@
-class Media implements Payable {// I use final, because in requirement object will immutable
+class Media implements Payable {
     private String title;
     private double durationSeconds;
     private int releaseYear;
-    private Artist artist;
+    public Artist artist;
 
     public Media(String title, int durationSeconds, int releaseYear) {
         if (title == null || title.trim().isEmpty()) {
