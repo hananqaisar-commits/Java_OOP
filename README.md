@@ -1,122 +1,141 @@
-# 📁 Java OOP Projects Directory
+# ☕ Java OOP Projects
 
-A structured collection of **Java Object-Oriented Programming (OOP)** projects and assignments, demonstrating core concepts through practical implementations.
+> A collection of Java Object-Oriented Programming projects and assignments.
+
+![Java](https://img.shields.io/badge/Java-OOP-orange?style=flat-square&logo=java)
+![Status](https://img.shields.io/badge/Status-Actively%20Learning-brightgreen?style=flat-square)
+![Student](https://img.shields.io/badge/Student-Hanan%20Qaisar-blue?style=flat-square)
+![Files](https://img.shields.io/badge/Files-68-lightgrey?style=flat-square)
 
 ---
 
 ## 👨‍💻 About
 
-* **Student:** Hanan Qaisar
-* **Focus:** Core Java & OOP Principles
-* **Repository:** `Java_OOP`
-* **Goal:** Strengthening problem-solving and OOP design skills
+**Student:** Hanan Qaisar
+**Focus:** Core Java & OOP Principles
+**Repository:** `Java_OOP`
 
 ---
 
-## 📂 Directory Structure
+## 📁 Directory Structure
 
 ```
-Java_OOP/
+Java_OOP/                          (18 directories, 68 files)
 │
-├── BasicOOP/
-├── CricketTeamManagement/
-├── DeliverySystem/
-├── MobileStore/
-├── OOP_Assignments/
-├── StringAnalyzing_Processing/
+├── BasicOOP/                      ← Core OOP concepts & practice files
+│   ├── Inheritance/
+│   ├── Polymorphism/
+│   └── *.java (constructors, arrays, strings, matrix ops...)
 │
-├── BankAccountTest.java
-├── Triangle.java
-├── University_Staff.java
-├── main.java
-└── README.md
+├── CricketTeamManagment/          ← Team & player management system
+│   ├── Main.java
+│   ├── Player.java
+│   └── team.java
+│
+├── DeliverySystem/                ← Restaurant order & delivery system
+│   ├── Main.java
+│   ├── Menuitem.java
+│   ├── Order.java
+│   └── Resturant.java
+│
+├── Hotel_Management/              ← Hotel booking & room management
+│   ├── IndigoHotel/
+│   ├── Booking.java
+│   ├── Main.java
+│   ├── Room_Deluxe.java
+│   └── Room_Standard.java
+│
+├── Library_Management_System/     ← Book & magazine library system
+│   ├── Book.java
+│   ├── Library1.java
+│   ├── LibraryItem.java
+│   ├── Magazine.java
+│   └── Main.java
+│
+├── MobileStore/                   ← Mobile inventory & sales system
+│   ├── Battery.java
+│   ├── Main.java
+│   ├── Phone.java
+│   └── Store.java
+│
+├── Music_Library/                 ← Music & podcast library (Dockerized)
+│   ├── src/
+│   ├── Dockerfile
+│   └── README.md
+│
+├── OOP_Assignments/               ← Lab assignments & exam practice
+│   └── *.java (BankAccount, StudentGrade, Matrix, Labs...)
+│
+├── StringAnalyzing_Processing/    ← String manipulation & algorithms
+│   └── Main.java
+│
+├── University_Staff_Management/   ← Staff hierarchy with inheritance
+│   ├── Person.java
+│   ├── Employee.java
+│   ├── Faculty.java
+│   ├── AdminStaff.java
+│   └── Main.java
+│
+├── Vehical_Rental_System/         ← Vehicle rental with polymorphism
+│   ├── Vehicle.java
+│   ├── Car.java
+│   ├── Bike.java
+│   ├── SUV.java
+│   └── Main.java
+│
+├── BankAccountTest.java           ← PIN verification & transactions
+├── Triangle.java                  ← Geometric calculations
+├── University_Staff.java          ← Staff hierarchy demo
+└── main.java                      ← General OOP entry point
 ```
 
 ---
 
-## 📦 Projects Overview
+## 🚀 Projects Overview
 
-### 🔹 BasicOOP
-
-Introduces fundamental OOP concepts such as classes, objects, constructors, and methods.
-**Run:** `BasicOOP.java`
-
----
-
-### 🔹 CricketTeamManagement
-
-A team management system with player registration and statistics tracking.
-**Run:** `CricketTeam.java`
-
----
-
-### 🔹 DeliverySystem
-
-Simulates order handling and delivery logistics — a real-world inspired application.
-**Run:** `DeliveryManager.java`
+| # | Project | Description | Run |
+|---|---------|-------------|-----|
+| 1 | **BasicOOP** | Core OOP concepts — constructors, arrays, strings, matrix operations, inheritance & polymorphism sub-folders | Various `.java` files |
+| 2 | **CricketTeamManagment** | Team management with player registration and stats tracking | `Main.java` |
+| 3 | **DeliverySystem** | Restaurant order and delivery logistics — real-world OOP | `Main.java` |
+| 4 | **Hotel_Management** | Hotel room booking system with deluxe & standard rooms | `Main.java` |
+| 5 | **Library_Management_System** | Book & magazine tracking with library item abstraction | `Main.java` |
+| 6 | **MobileStore** | Mobile phone inventory and sales management | `Main.java` |
+| 7 | **Music_Library** | Music & podcast library system with playback interfaces (Dockerized) | `src/Tester.java` |
+| 8 | **OOP_Assignments** | Lab assignments covering bank accounts, grades, matrix ops | See individual files |
+| 9 | **StringAnalyzing_Processing** | String analysis and processing algorithms | `Main.java` |
+| 10 | **University_Staff_Management** | Staff hierarchy using inheritance — Person → Employee → Faculty/Admin | `Main.java` |
+| 11 | **Vehical_Rental_System** | Vehicle rental system — Car, Bike, SUV with polymorphism | `Main.java` |
 
 ---
 
-### 🔹 MobileStore
+## 🧠 Topics Covered
 
-Inventory and sales management system for a mobile store.
-**Run:** `Mobile.java`
-
----
-
-### 🔹 OOP_Assignments
-
-Collection of assignments covering multiple OOP concepts and implementations.
-**Run:** Individual assignment files
-
----
-
-### 🔹 StringAnalyzing_Processing
-
-Focuses on string manipulation, analysis, and algorithmic processing.
-**Run:** `StringAnalyzer.java`
-
----
-
-## 📄 Individual Root Files
-
-* **BankAccountTest.java** → Bank system with PIN verification and transactions
-* **Triangle.java** → Triangle calculations using OOP concepts
-* **University_Staff.java** → Demonstrates inheritance and hierarchy
-* **main.java** → General entry point for testing OOP concepts
-
----
-
-## 🧠 Concepts Covered
-
-* **Classes & Objects** → Constructors, instance variables, methods
-* **Encapsulation** → Data hiding using getters and setters
-* **Inheritance** → Parent-child relationships
-* **Polymorphism** → Method overloading and overriding
-* **Abstraction** → Abstract classes and interfaces
-* **Composition (Has-A Relationship)** → Object-based design
+| Topic | Concepts |
+|-------|----------|
+| **Classes & Objects** | Constructors, copy constructors, instance variables, methods |
+| **Encapsulation** | Private fields, getters & setters |
+| **Inheritance** | Parent/child classes, method overriding, staff & vehicle hierarchies |
+| **Polymorphism** | Method overloading, runtime polymorphism |
+| **Abstraction** | Abstract classes, interfaces |
+| **Has-A Relationship** | Object composition & aggregation |
+| **Collections** | ArrayList, arrays, matrix operations |
+| **String Processing** | Manipulation, analysis, algorithms |
 
 ---
 
 ## ▶️ How to Run
 
-Compile and run any file using:
-
-```
+```bash
+# Compile
 javac FileName.java
+
+# Run
 java FileName
 ```
 
----
-
-## 🚀 Future Improvements
-
-* Add real-world projects (e.g., secure login system 🔐)
-* Implement file handling and database integration
-* Enhance project complexity for industry-level readiness
+> Make sure **JDK** is installed. For Music_Library, Docker is also supported.
 
 ---
 
-## ⭐ Final Note
-
-This repository reflects continuous learning and hands-on practice in Java OOP, with a focus on building strong programming fundamentals.
+*Learning Java OOP one project at a time. 🚀*
