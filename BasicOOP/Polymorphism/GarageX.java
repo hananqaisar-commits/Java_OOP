@@ -72,7 +72,7 @@ class Bike extends Vehicle {
     }
 }
 
-public class GarageX {
+public class Main {
     public static void main(String[] args) {
         Vehicle Honda1 = new Car("Civic", "Honda");
         Vehicle Honda2 = new Car("Civic", "Honda");
