@@ -45,12 +45,12 @@ class Media implements Playable, Comparable<Media> {
               // true, poitive mean swap it and negative mean don't swap it
     public int compareTo(Media other) {
         int result = this.getTitle().compareToIgnoreCase(other.getTitle());// .compareToIgnorecase will compare nut
-                                                                           // ignore case sensitive of title
+                                                                           // ignore case sensitive of title.
         if (result == 0) {// if result(title ties then it will sort according to realease year)
-            if (this.getReleaseYear() > other.getReleaseYear()) {
-                return 1;// swapped actually it mean > 0 → this comes after other (Swapped)
+            if (this.getReleaseYear() > other.getReleaseYear()) {// curent obj is greater then other so, swapped it
+                return 1;//
             } else if (this.getReleaseYear() < other.getReleaseYear()) {
-                return -1;// not swapped-------> < 0 → this comes before other
+                return -1;
             } else if (this.getReleaseYear() == other.getReleaseYear()) {
                 return 0;// it will sort naturally
             }
@@ -75,4 +75,9 @@ class Media implements Playable, Comparable<Media> {
         return this.artist.getName().equalsIgnoreCase(other.artist.getName());
     }
 
+    @Override
+    public String toString() {
+        return String.format("Title: %s | Duration: %.2f mins | Release Year: %d | Artist: %s",
+                getTitle(), getDurationSeconds(), getReleaseYear(), getArtist());
+    }
 }
