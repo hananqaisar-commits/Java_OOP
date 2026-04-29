@@ -1,7 +1,7 @@
 class Artist {
     private String name;
     private String country;
-    private long followerCount;
+    private double followerCount;
 
     public Artist(String name, String country, long followerCount) {
         this.name = name;
@@ -17,13 +17,14 @@ class Artist {
         return country;
     }
 
-    public long getFollowerCount() {
-        return followerCount;
+    public double getFollowerCount() {
+        double followers = this.followerCount / 1000000;
+        return followers;
     }
 
-    public void addFollowers(long delta) {
-        if (delta > 0) {
-            this.followerCount += delta;
+    public void addFollowers(long moreFollowers) {
+        if (moreFollowers > 0) {
+            this.followerCount += moreFollowers;
         } else {
             System.out.println("Invalid");
         }
@@ -48,7 +49,8 @@ class Artist {
 
     @Override
     public String toString() {
-        return String.format("Artist: %s(%s) | Followers: %d", getName(), getCountry(), getFollowerCount());
+        return String.format("%s(%s) | Followers: %.2fM (Million)", getName(), getCountry(),
+                getFollowerCount());
     }
 
-}Comparable
+}
