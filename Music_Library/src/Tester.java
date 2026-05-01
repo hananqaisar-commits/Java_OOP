@@ -4,6 +4,7 @@ public class Tester {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
+        ArrayList<Media> list = new ArrayList<>();// to store list of mmedia for sorting
 
         // Create Media objects
         Media m1 = new Song("Dil Lagi", 134, 2019, "Sad");
@@ -27,28 +28,33 @@ public class Tester {
         personal.addItems(m2);
         personal.addItems(m3);
 
-        System.out.println("===============Playlist=============");
-        System.out.println(likedSongs);
-        System.out.println(personal);
-
-        System.out.println("=============Comparision============");
+        System.out.println("\n===============--Comparision--==============");
         System.out.printf("Compare %s with %s: ", m1.getArtist(), m3.getArtist());
         System.out.println(m1.artist.equals(m3.artist)); // true
         System.out.printf("Comapre %s with %s: ", m1.getArtist(), m2.getArtist());
         System.out.println(m1.artist.equals(m2.artist)); // false
 
+        System.out.println("\n==================--Comparision on song genre--==================");
+        System.out.printf("%s\nCompares with\n%s : %b", m1, m2, m1.equals(m2));
+
         // creating list to store all media's ans then sort it
-        List<Media> list = new ArrayList<>();
         list.add(m4);
         list.add(m1);
         list.add(m2);
         list.add(m3);
 
+        System.out.println("\n=================--Playlist--===============");
+        System.out.println(likedSongs);
+        System.out.println(personal);
+        int min = (int) Media.totalDuration(list) / 60;
+        int sec = (int) Media.totalDuration(list) % 60;
+        System.out.printf("Total duration time of all media: %dmin:%dsec", min, sec);
+
         // here i am sortting my list by overridding compareTo method in media class
         Collections.sort(list);
 
         // Print sorted list through Collections
-        System.out.println("<<<<==============---Sorting by Title & release year---=============>>>> ");
+        System.out.println("\n<<<<==============---Sorting by Title & release year---=============>>>> ");
         System.out.println("Sorted list:");
         for (Media media : list) {
             System.out.println(media);
@@ -62,14 +68,21 @@ public class Tester {
         likedSongs.getSize(likedSongs);
         personal.getSize(personal);
 
-        System.out.println("<<<<==============---Sorting by Durations(Accending)---=============>>>> ");
+        System.out.println("\n<<<<==============---Sorting Natural)---=============>>>> ");
+        Collections.sort(list);
+        System.out.println("Sorted list:");
+        for (Media media : list) {
+            System.out.println(media);
+        }
+
+        System.out.println("\n<<<<==============---Sorting by Durations(Accending Duration time)---=============>>>> ");
         Collections.sort(list, new sortByduration());
         System.out.println("Sorted list:");
         for (Media media : list) {
             System.out.println(media);
         }
 
-        System.out.println("<<<<==============---Sorting by Release Years(Decending)---=============>>>> ");
+        System.out.println("\n<<<<==============---Sorting by Release Years(Decending Year)---=============>>>> ");
         Collections.sort(list, new sortByreleaseYear());
         System.out.println("Sorted list:");
         for (Media media : list) {
