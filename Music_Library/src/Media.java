@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Media implements Playable, Comparable<Media> {
     private String title;
     public double durationSeconds;
@@ -39,6 +41,14 @@ class Media implements Playable, Comparable<Media> {
 
     public int getReleaseYear() {
         return releaseYear;
+    }
+
+    public static double totalDuration(ArrayList<Media> list) {
+        double sec = 0.00;
+        for (Media media : list) {
+            sec = sec + media.getDurationSeconds();
+        }
+        return sec;
     }
 
     @Override // i am overridding comapreTo method of comparable class it result int....0 mean
