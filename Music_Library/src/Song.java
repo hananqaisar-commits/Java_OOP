@@ -1,9 +1,10 @@
 class Song extends Media {
     private String genre;
 
-    public Song(String title, int durationSeconds, int releaseYear, String genre) {
+    public Song(String title, int durationSeconds, int releaseYear, String genre, Artist artist) {
         super(title, durationSeconds, releaseYear);
         this.genre = genre;
+        this.artist = artist;
     }
 
     public void setGenre(String genre) {
@@ -14,6 +15,7 @@ class Song extends Media {
         return genre;
     }
 
+    // equal song check with genre
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -31,7 +33,7 @@ class Song extends Media {
     public void play() {
 
         super.play();
-        System.out.printf("\t\tPlaying Song:%s by %s duration:%f [%s] \n", getTitle(), getArtist(),
+        System.out.printf("%s by %s %f [%s] \n", getTitle(), artist.getName(),
                 getDurationSeconds(),
                 getGenre());
     }
