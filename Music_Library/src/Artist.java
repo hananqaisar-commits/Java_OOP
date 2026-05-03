@@ -18,7 +18,7 @@ class Artist {
     }
 
     public double getFollowerCount() {
-        double followers = this.followerCount / 1000000;
+        double followers = this.followerCount / 1000000;// convert it into Million
         return followers;
     }
 
@@ -41,10 +41,15 @@ class Artist {
         }
         Artist other = (Artist) otherObj;
 
-        if (this.name == null) {
+        if (this.name == null) {// if this artist name is null then it commpare it with other.name(null)
             return other.name == null;
         }
-        return (other.name.equalsIgnoreCase(this.name));
+        return (other.name.equalsIgnoreCase(this.name));// case sensitivity is also checked
+
+        // 2nd way will be
+        // String n1 = this.getName().toLowerCase();
+        // String n2 = other.getName().toLowerCase();
+        // return n1.equals(n2);
     }
 
     @Override
