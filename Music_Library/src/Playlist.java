@@ -36,20 +36,6 @@ class Playlist {
         return items.get(index);
     }
 
-    public void playAll(Playlist otherobj) {
-        for (Media n : otherobj.items) {
-            if (n instanceof Song) {
-                System.out.println("Song: ");
-                n.play();
-            }
-            if (n instanceof PodcastEp) {
-                System.out.println("Podcast: ");
-                n.play();
-            }
-        }
-
-    }
-
     @Override
     public String toString() {
         return String.format("Playlist: %s | Size: %d", getPlaylistName(), getSize(this));
