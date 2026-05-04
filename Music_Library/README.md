@@ -17,8 +17,11 @@ A CLI-based Java application to manage your personal music collection — add so
 ## Project Structure
 
 ```
+.
 ├── Dockerfile
 ├── README.md
+├── runDocker.sh
+├── run.sh
 └── src
     ├── Artist.java
     ├── Comparator.java
@@ -60,6 +63,12 @@ cd music-library
 javac -d out src/*.java
 java -cp out Tester
 ```
+### Script for run code
+```
+# PWD(must): Music_Library
+bash run.sh
+```
+
 
 ### Run with Docker 🐳
 
@@ -72,11 +81,34 @@ docker run -it music-library
 ```bash
  docker run -it music-library /bin/bash
 ```
-
+### Script to run in container 
+```
+# PWD(must): Music_Library
+bash rundocker.sh
+```
 ---
 
 ## Sample Output:
 ```
+ ________________________________________________________
+|                  MENU MUSIC-LIBRARY                    |
+|________________________________________________________|
+
+ 1)  Show Artists
+ 2)  Show All Media (Heterogeneous List)
+ 3)  Play Playlist
+ 4)  Sort by Title & Year  (Natural Order)
+ 5)  Sort by Duration      (Ascending)
+ 6)  Sort by Release Year  (Descending)
+ 7)  Artist Comparisons    (equals)
+ 8)  Library Utilities     (songsInGenre etc)
+ 9)  Playall playlist
+ 10) Total duration of all media
+ 0)  Exit
+
+ ________________________________________________________
+  Enter your choice: 1
+
  ________________________________________________________
 |   Artist Created                                       |
 |________________________________________________________|
@@ -89,7 +121,27 @@ docker run -it music-library
  Steave                    Unknown         953.34M
  Rahat Fateh Ali Khan      Pakistan        45.08M
 
+
  ________________________________________________________
+|                  MENU MUSIC-LIBRARY                    |
+|________________________________________________________|
+
+ 1)  Show Artists
+ 2)  Show All Media (Heterogeneous List)
+ 3)  Play Playlist
+ 4)  Sort by Title & Year  (Natural Order)
+ 5)  Sort by Duration      (Ascending)
+ 6)  Sort by Release Year  (Descending)
+ 7)  Artist Comparisons    (equals)
+ 8)  Library Utilities     (songsInGenre etc)
+ 9)  Playall playlist
+ 10) Total duration of all media
+ 0)  Exit
+
+ ________________________________________________________
+  Enter your choice: 2
+
+________________________________________________________
 | 9.2  ||  Building heterogeneous ArrayList<Media>       |
 |________________________________________________________|
 
@@ -112,8 +164,9 @@ docker run -it music-library
  --------------------------------------------------------------------------------------------------------------------------------------------
   1   | Tech Talk: Future of CyberSecurity            Tech Talk                                     7   
   2   | Mind Matters: Sleep Science                   Mind Matters                                  12  
-  3   | Podcast No. 1: Intro to Python                Podcast                                       3   
+  3   | Podcast No. 1: Intro to Python                Podcast                                       3
 ```
+
 ## Contributing
 
 1. Fork the repo
