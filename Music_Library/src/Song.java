@@ -33,8 +33,8 @@ class Song extends Media {
     public void play() {
 
         super.play();
-        System.out.printf("%s by %s %f [%s] \n", getTitle(), artist.getName(),
-                getDurationSeconds(),
+        System.out.printf("%s by %s %d mins [%s] \n", getTitle(), artist.getName(),
+                return_min(),
                 getGenre());
     }
 }
