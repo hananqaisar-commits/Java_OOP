@@ -6,7 +6,7 @@ class sortByPrice implements Comparator<Product> {
 
     @Override
     public int compare(Product t, Product other) {
-        int result = Double.compare(t.getPrice(), other.getPrice());
+        int result = Double.compare(other.getPrice(), t.getPrice());
         return result;
     }
 
