@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.demo.HelloController">
+   <children>
+      <ImageView fx:id="image" fitHeight="248.0" fitWidth="384.0" layoutX="277.0" layoutY="150.0"
+                 onMouseEntered="#mouseEntered"
+                 onMouseExited="#mouseExited"
+                 pickOnBounds="true" preserveRatio="true" />
+      <CheckBox fx:id="button" layoutX="383.0" layoutY="447.0" mnemonicParsing="false"
+                onAction="#buttonclicked" prefHeight="49.0" prefWidth="287.0" text="ON/OFF" />
+   </children>
+</AnchorPane>

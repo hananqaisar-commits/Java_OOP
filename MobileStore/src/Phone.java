@@ -1,6 +1,4 @@
-package MobileStore;
-
-class Phone {
+public class Phone {
     private String brand, model;
     private double price;
     Battery battery;
@@ -31,6 +29,10 @@ class Phone {
         } else {
             System.out.println("Invalid");
         }
+    }
+
+    public Battery getBattery() {
+        return battery;
     }
 
     public void setPrice(double price) {

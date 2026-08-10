@@ -1,4 +1,8 @@
 package src.smart_student_ranking_system;
 
-public class summary {
+interface summary {
+
+      void detail();
+      int GPA();
+
 }

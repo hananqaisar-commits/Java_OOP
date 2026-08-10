@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 class Solve {
@@ -46,7 +45,7 @@ public class Nifty_Sequence_Generator {
             s1.check();
         } else {
             System.out.println("Enter positive number.");
-        }
+            }
 
     }
 

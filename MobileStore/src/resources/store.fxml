@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="700" prefHeight="500"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="StoreController">
+    <top>
+        <VBox spacing="5" alignment="CENTER" style="-fx-padding: 15;">
+            <Label fx:id="storeNameLabel" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+            <Label fx:id="storeLocationLabel" style="-fx-font-size: 14;"/>
+            <Label fx:id="storeCountLabel" style="-fx-font-size: 14;"/>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="phoneTable">
+            <columns>
+                <TableColumn fx:id="brandCol" text="Brand" prefWidth="150"/>
+                <TableColumn fx:id="modelCol" text="Model" prefWidth="150"/>
+                <TableColumn fx:id="priceCol" text="Price" prefWidth="150"/>
+                <TableColumn fx:id="batteryCol" text="Battery" prefWidth="200"/>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15;">
+            <Button text="Add Phone" onAction="#handleAddPhone" style="-fx-font-size: 14;"/>
+            <Button text="Show Detail" onAction="#handleShowDetail" style="-fx-font-size: 14;"/>
+            <Button text="Back" onAction="#handleBack" style="-fx-font-size: 14;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -29,8 +29,8 @@ class LibraryUtils {
 
         // 1st Logic that i used in this:
         for (Media media : list) {
-            if (media instanceof Song) {
-                Song corrected = (Song) media;
+            if (media instanceof Song corrected) {// modern way to use instanceof
+
                 String s_lowercase1 = corrected.getGenre().toLowerCase();
                 String s_lowercase2 = genre.toLowerCase();
 

@@ -1,8 +1,7 @@
-package MobileStore;
 
 import java.util.ArrayList;
 
-class Store {
+public class Store {
     private String name, location;
     ArrayList<Phone> phones;
     private static int countMobile;
@@ -15,6 +14,14 @@ class Store {
         this.location = location;
         phones = new ArrayList<>();// Now each phones arraylist belongs to each Store
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLocation() {
+        return location;
     }
 
     public void addPhone(Phone p) {

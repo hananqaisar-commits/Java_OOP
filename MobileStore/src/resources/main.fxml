@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="400" prefWidth="500" spacing="20" style="-fx-padding: 40; -fx-background-color: red;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/26" fx:controller="MainController">
+
+    <Label style="-fx-font-size: 28; -fx-font-weight: bold;" text="Welcome to Mobile Store" textFill="#514545" />
+    <Label style="-fx-font-size: 16;" text="Select a Store" textFill="#754747" />
+
+    <Button onAction="#handleMobileOyee" prefWidth="250.0" style="-fx-font-size: 14;" text="Mobile Oyee - Pakistan" textFill="#540606" />
+
+    <Button onAction="#handleMobileWorld" prefWidth="250" style="-fx-font-size: 14;" text="Mobile World - USA" textFill="#681010" />
+
+    <Label fx:id="totalLabel" style="-fx-font-size: 13;" />
+</VBox>

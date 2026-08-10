@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER_LEFT" prefHeight="450" prefWidth="400" spacing="12" style="-fx-padding: 30;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/26" fx:controller="AddPhoneController">
+
+    <Label style="-fx-font-size: 22; -fx-font-weight: bold;" text="Add New Phone" />
+    <Label text="Brand:" />
+    <TextField fx:id="brandField" promptText="e.g. Samsung " />
+    <Label text="Model:" />
+    <TextField fx:id="modelField" promptText="e.g. Galaxy A15" />
+    <Label text="Price:" />
+    <TextField fx:id="priceField" promptText="e.g. 53000" />
+    <Label text="Battery Type (optional):" />
+    <TextField fx:id="batteryTypeField" promptText="default: Li-ion" />
+    <Label text="Battery Capacity mAH (optional):" />
+    <TextField fx:id="batteryCapacityField" promptText="default: 5000" />
+    <Label fx:id="messageLabel" style="-fx-text-fill: red;" />
+    <HBox alignment="CENTER" spacing="15">
+        <Button onAction="#handleAdd" style="-fx-font-size: 14;" text="Add" />
+        <Button onAction="#handleCancel" style="-fx-font-size: 14;" text="Cancel" />
+    </HBox>
+</VBox>

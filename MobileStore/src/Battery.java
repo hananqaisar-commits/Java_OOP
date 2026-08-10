@@ -1,4 +1,3 @@
-package MobileStore;
 
 class Battery {
     private int capacity;// in mAH

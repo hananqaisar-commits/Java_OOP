@@ -10,6 +10,8 @@ public class Main {
         System.out.printf("|___________________________________________________|\n");
     }
 
+    static Comparator<Product> byPrice_Accending = (obj1, obj2) -> obj1.getPrice().obj2.getPrice();
+
     public static void main(String[] args) {
         Product p1 = new Product("Oil", 2414, 1345, 7.9);
         Product p2 = new Product("Shampoo", 2314, 2385, 9.6);
@@ -22,6 +24,7 @@ public class Main {
         list.add(p3);
         list.add(p2);
         list.add(p1);
+        list.add(p5);
 
         header("Natural sort(Price)");
         Collections.sort(list);
