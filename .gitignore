@@ -1,23 +1,35 @@
-\# Compiled class files
+# Build & Output Directories
+target/
+out/
+bin/
+build/
 *.class
 
-# Bash file
-*.sh
-*.md
-# Output folders
-
-bin/
-
-# IDE files
-*.idea/
+# IDE & Editor Files
+.idea/
 *.iml
 .vscode/
+.settings/
+.project
+.classpath
 
-# OS files
+# Virtual Environments & Python
+venv/
+venvclear/
+.venv/
+__pycache__/
+
+# OS Generated Files
 .DS_Store
 Thumbs.db
 
-*.zip
-*.docx
+# Temporary & Swap Files
+*.swp
 *.swn
-*.txt
+*.tmp
+*.bak
+*.zip
+.main.java.swp
+
+# Maven Wrapper Binaries (optional ignore if not committing wrapper jar)
+.mvn/wrapper/maven-wrapper.jar
