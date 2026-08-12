@@ -1,26 +1,28 @@
-import java.util.ArrayList;
+package com.musiclibrary.model;
 
-class Playlist {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Playlist {
     private String playlistName;
-    ArrayList<Media> items;
+    public List<Media> items;
 
     public Playlist(String playlistName) {
         this.playlistName = playlistName;
         this.items = new ArrayList<>();
-
     }
 
     public String getPlaylistName() {
         return playlistName;
     }
 
+    public List<Media> getItems() {
+        return items;
+    }
+
     public void addItems(Media other) {
-        if (other instanceof Song) {
-            Media s = (Song) other;
-            items.add(s);
-        } else if (other instanceof PodcastEp) {
-            Media p = (PodcastEp) other;
-            items.add(p);
+        if (other != null) {
+            items.add(other);
         }
     }
 
@@ -29,7 +31,7 @@ class Playlist {
     }
 
     public int getSize(Playlist other) {
-        return other.items.size();
+        return other != null && other.items != null ? other.items.size() : 0;
     }
 
     public Media getIndex(int index) {
@@ -38,6 +40,6 @@ class Playlist {
 
     @Override
     public String toString() {
-        return String.format("Playlist: %s | Size: %d", getPlaylistName(), getSize(this));
+        return String.format("Playlist: %s | Size: %d", getPlaylistName(), items.size());
     }
 }

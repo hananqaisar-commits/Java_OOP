@@ -1,4 +1,6 @@
-class Artist {
+package com.musiclibrary.model;
+
+public class Artist {
     private String name;
     private String country;
     private double followerCount;
@@ -18,8 +20,12 @@ class Artist {
     }
 
     public double getFollowerCount() {
-        double followers = this.followerCount / 1000000;// convert it into Million
+        double followers = this.followerCount / 1000000.0; // convert into Million
         return followers;
+    }
+
+    public long getRawFollowerCount() {
+        return (long) followerCount;
     }
 
     public void addFollowers(long moreFollowers) {
@@ -41,21 +47,14 @@ class Artist {
         }
         Artist other = (Artist) otherObj;
 
-        if (this.name == null) {// if this artist name is null then it commpare it with other.name(null)
+        if (this.name == null) {
             return other.name == null;
         }
-        return (other.name.equalsIgnoreCase(this.name));// case sensitivity is also checked
-
-        // 2nd way will be
-        // String n1 = this.getName().toLowerCase();
-        // String n2 = other.getName().toLowerCase();
-        // return n1.equals(n2);
+        return (other.name.equalsIgnoreCase(this.name));
     }
 
     @Override
     public String toString() {
-        return String.format("%s(%s) | Followers: %.2fM (Million)", getName(), getCountry(),
-                getFollowerCount());
+        return String.format("%s (%s) | Followers: %.2fM", getName(), getCountry(), getFollowerCount());
     }
-
 }

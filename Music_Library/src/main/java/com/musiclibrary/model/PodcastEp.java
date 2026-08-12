@@ -1,4 +1,6 @@
-class PodcastEp extends Media {
+package com.musiclibrary.model;
+
+public class PodcastEp extends Media {
     private String showName;
     private int epNo;
 
@@ -7,9 +9,9 @@ class PodcastEp extends Media {
         if (epNo >= 1) {
             this.epNo = epNo;
         } else {
-            System.out.println("Invalid");
+            System.out.println("Invalid episode number");
+            this.epNo = 1;
         }
-
         this.showName = showName;
     }
 
@@ -32,7 +34,12 @@ class PodcastEp extends Media {
     @Override
     public void play() {
         super.play();
-        System.out.printf(" %s %s Ep: %d (Duration: %d mins)\n", getTitle(), getShowName(), getEpNo(),
-                return_min());
+        System.out.printf("%s (%s Ep: %d) - Duration: %d mins\n", getTitle(), getShowName(), getEpNo(), return_min());
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Podcast: %s | Show: %s | Ep #%d | Year: %d | Duration: %d mins",
+                getTitle(), getShowName(), getEpNo(), getReleaseYear(), return_min());
     }
 }

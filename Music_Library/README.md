@@ -1,186 +1,173 @@
-# Music Library 🎵
+# Music Library 🎵 (Java 21 + Maven + MCP Server)
 
-A CLI-based Java application to manage your personal music collection — add songs, create playlists, and search your library from the terminal.
+A modern **Java 21 + Maven** Music Library Management System integrated with **Model Context Protocol (MCP)** server capability. 
 
----
-
-## Features
-
-- Add and remove songs from your library
-- Create and manage playlists
-- Search and filter songs by title, artist, or genre
-- Runs fully in the terminal (no GUI)
-- Docker support for easy setup
+The application separates core backend domain logic (`Song`, `PodcastEp`, `Artist`, `Playlist`, `MusicLibraryService`) from the MCP stdio protocol layer (`MusicMcpServer`). This allows any MCP-compatible AI (Claude Desktop, Cursor, VS Code, Roo Code, Windsurf) to query media, search artists, add songs, and manage playlists dynamically using AI tools.
 
 ---
 
-## Project Structure
+## 🏗️ Architecture
 
 ```
-.
-├── Dockerfile
-├── README.md
-├── runDocker.sh
-├── run.sh
-└── src
-    ├── Artist.java
-    ├── Comparator.java
-    ├── LibraryUtils.java
-    ├── Main.java
-    ├── Media.java
-    ├── out
-    │   ├── Artist.class
-    │   ├── LibraryUtils.class
-    │   ├── Main.class
-    │   ├── Media.class
-    │   ├── Playable.class
-    │   ├── Playlist.class
-    │   ├── PodcastEp.class
-    │   ├── Song.class
-    │   ├── sortByduration.class
-    │   └── sortByreleaseYear.class
-    ├── Playable.java
-    ├── Playlist.java
-    ├── PodcastEp.java
-    └── Song.java
-
+                          +-------------------------------+
+                          |   AI Client (Claude/Cursor)   |
+                          +---------------+---------------+
+                                          | JSON-RPC 2.0 (stdio)
+                                          v
+                          +---------------+---------------+
+                          |    MusicMcpServer (MCP)       |
+                          +---------------+---------------+
+                                          |
+                                          v
+                          +---------------+---------------+
+                          |     MusicLibraryService       |
+                          +---------------+---------------+
+                                          |
+               +--------------------------+--------------------------+
+               |                          |                          |
+               v                          v                          v
+         [Song / Podcast]              [Artist]                  [Playlist]
 ```
+
+### Key Components
+
+1. **`com.musiclibrary.model`**:
+   - `Media.java`: Base class implementing `Playable` and `Comparable`.
+   - `Song.java`: Represents music tracks with genres.
+   - `PodcastEp.java`: Represents podcast episodes with episode numbers and show titles.
+   - `Artist.java`: Represents musical artists with follower counts.
+   - `Playlist.java`: Manages collections of media.
+   - `sortByduration.java` & `sortByreleaseYear.java`: Custom comparators.
+
+2. **`com.musiclibrary.service`**:
+   - `MusicLibraryService.java`: Encapsulates all domain operations, data persistence, search, filtering, and summaries. Completely independent of CLI or MCP.
+   - `LibraryUtils.java`: Utility methods for duration calculations, genre filtering, and playback.
+
+3. **`com.musiclibrary.mcp`**:
+   - `MusicMcpServer.java`: Implements MCP stdio JSON-RPC 2.0 server. Routes AI tool calls directly to `MusicLibraryService`.
 
 ---
 
-## Getting Started
+## 🛠️ MCP Tools Exposed to AI
+
+The MCP server exposes 7 powerful tools to any connected AI assistant:
+
+| Tool Name | Description | Required Arguments |
+| :--- | :--- | :--- |
+| `get_all_media` | Retrieves all songs and podcasts in the library | None |
+| `get_all_artists` | Lists registered artists with country & follower stats | None |
+| `get_songs_by_genre` | Filters songs by genre (e.g., `Romantic`, `Sad`, `Pop`, `Rock`, `Sufi`) | `genre` |
+| `search_media` | Searches titles, artists, show names, or genres | `query` |
+| `add_song` | Adds a new song and registers the artist if necessary | `title`, `artistName`, `genre`, `durationSeconds`, `releaseYear` |
+| `get_library_summary` | Provides overall counts, total playback time, and statistics | None |
+| `play_playlist` | Displays tracks inside a specific playlist | `playlistName` |
+
+---
+
+## 🚀 How to Run
 
 ### Requirements
+- **Java 21+**
+- **Apache Maven 3.9+**
+- **Docker** *(optional)*
 
-- Java 17+
-- Docker *(optional)*
-
-### Run Locally
-
+### 1. Build Project
 ```bash
-git clone https://github.com/your-username/music-library.git
-cd music-library
-javac -d out src/*.java
-java -cp out Tester
+mvn clean package -DskipTests
 ```
-### Script for run code
+
+### 2. Run MCP Server (for AI Integration)
+```bash
+bash run_mcp.sh
 ```
-# PWD(must): Music_Library
+*Or directly via java:*
+```bash
+java -jar target/music-library-mcp-1.0.0.jar
+```
+
+### 3. Run Standard CLI Menu
+```bash
 bash run.sh
 ```
 
-
-### Run with Docker 🐳
-
+### 4. Run with Docker 🐳
 ```bash
-docker build -t music-library . #run from directory
+docker build -t music-library .
 docker run -it music-library
 ```
-### Debuuging from bash in container
-
-```bash
- docker run -it music-library /bin/bash
-```
-### Script to run in container 
-```
-# PWD(must): Music_Library
-bash rundocker.sh
-```
----
-
-## Sample Output:
-```
- ________________________________________________________
-|                  MENU MUSIC-LIBRARY                    |
-|________________________________________________________|
-
- 1)  Show Artists
- 2)  Show All Media (Heterogeneous List)
- 3)  Play Playlist
- 4)  Sort by Title & Year  (Natural Order)
- 5)  Sort by Duration      (Ascending)
- 6)  Sort by Release Year  (Descending)
- 7)  Artist Comparisons    (equals)
- 8)  Library Utilities     (songsInGenre etc)
- 9)  Playall playlist
- 10) Total duration of all media
- 0)  Exit
-
- ________________________________________________________
-  Enter your choice: 1
-
- ________________________________________________________
-|   Artist Created                                       |
-|________________________________________________________|
-
- Name                      Country         Followers
- --------------------------------------------------------
- Atif Aslam                Pakistan        230.32M
- Arijit Singh              India           73.00M
- Atif Aslam                Pakistan        1.34M
- Steave                    Unknown         953.34M
- Rahat Fateh Ali Khan      Pakistan        45.08M
-
-
- ________________________________________________________
-|                  MENU MUSIC-LIBRARY                    |
-|________________________________________________________|
-
- 1)  Show Artists
- 2)  Show All Media (Heterogeneous List)
- 3)  Play Playlist
- 4)  Sort by Title & Year  (Natural Order)
- 5)  Sort by Duration      (Ascending)
- 6)  Sort by Release Year  (Descending)
- 7)  Artist Comparisons    (equals)
- 8)  Library Utilities     (songsInGenre etc)
- 9)  Playall playlist
- 10) Total duration of all media
- 0)  Exit
-
- ________________________________________________________
-  Enter your choice: 2
-
-________________________________________________________
-| 9.2  ||  Building heterogeneous ArrayList<Media>       |
-|________________________________________________________|
-
-
-  Songs created:
-  #   | Title                                    Artist                                   Genre      Year
- --------------------------------------------------------------------------------------------------------------------------------------------
-  1   | Dil Lagi                                 Artist: Rahat Fateh Ali Khan             Sad        2019
-  2   | Dil Lagi (Romantic Version)              Artist: Arijit Singh                     Romantic   2020
-  3   | Dil Lagi (Romantic Version)              Artist: Arijit Singh                     Romantic   2020
-  4   | The End of Beginning                     Artist: Steave                           Emotional  2018
-  5   | Tum Hi Ho                                Artist: Atif Aslam                       Romantic   2013
-  6   | Tera Hona                                Artist: Atif Aslam                       Romantic   2022
-  7   | Shape of You                             Artist: Steave                           Pop        2017
-  8   | Bohemian Rhapsody                        Artist: Steave                           Rock       1975
-  9   | Kun Faya Kun                             Artist: Arijit Singh                     Sufi       2011
-
-  Podcast created:
-  #   | Title                                         Show                                          Ep No
- --------------------------------------------------------------------------------------------------------------------------------------------
-  1   | Tech Talk: Future of CyberSecurity            Tech Talk                                     7   
-  2   | Mind Matters: Sleep Science                   Mind Matters                                  12  
-  3   | Podcast No. 1: Intro to Python                Podcast                                       3
-```
-
-## Contributing
-
-1. Fork the repo
-2. Create a branch (`git checkout -b feature/your-feature`)
-3. Commit your changes
-4. Open a Pull Request
 
 ---
-Student: 'Hanan Qaisar' <br>
-Status:  'Actively learning' <br>
 
-## License
+## 🤖 AI Configuration Guide (How to connect AI to MCP)
 
-MIT License
+### 1. Claude Desktop Setup
+Open or create your Claude Desktop config file:
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+Add the following configuration:
+```json
+{
+  "mcpServers": {
+    "java-music-library": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/home/hanan/Desktop/Java_OOP/Music_Library/target/music-library-mcp-1.0.0.jar"
+      ]
+    }
+  }
+}
+```
+
+### 2. Cursor / VS Code / Roo Code / Windsurf Setup
+In your Cursor settings or Roo Code / MCP extension config (`mcp.json` or settings):
+```json
+{
+  "mcpServers": {
+    "music-library": {
+      "command": "bash",
+      "args": [
+        "/home/hanan/Desktop/Java_OOP/Music_Library/run_mcp.sh"
+      ]
+    }
+  }
+}
+```
+
 ---
-> Every song tells a story — listen closely
+
+## 💬 AI Commands & Prompts (Roman Urdu & English)
+
+Once configured, you can command your AI using natural language prompts. The AI will automatically select and call the appropriate MCP tool!
+
+### Example 1: Add a new song
+- **Prompt (Roman Urdu)**:  
+  `"AI, meri music library mei naya song add karo: title 'Pasoori', artist 'Ali Sethi', country 'Pakistan', genre 'Pop', duration 224 seconds, year 2022."`
+- **AI Action**: Calls tool `add_song` with corresponding arguments.
+
+### Example 2: Search for songs by genre
+- **Prompt (Roman Urdu)**:  
+  `"Music library se saaray 'Romantic' songs dikhao."`
+- **AI Action**: Calls tool `get_songs_by_genre(genre: "Romantic")`.
+
+### Example 3: Get total statistics
+- **Prompt (Roman Urdu)**:  
+  `"Mujhe puri music library ki summary aur total runtime batao."`
+- **AI Action**: Calls tool `get_library_summary()`.
+
+### Example 4: Search for media
+- **Prompt (English)**:  
+  `"Search for any songs or podcasts related to CyberSecurity or Atif Aslam."`
+- **AI Action**: Calls tool `search_media(query: "CyberSecurity")`.
+
+### Example 5: Play a playlist
+- **Prompt (Roman Urdu)**:  
+  `"Favorite Songs wali playlist ke saray gane play karke dikhao."`
+- **AI Action**: Calls tool `play_playlist(playlistName: "Favorite Songs")`.
+
 ---
+
+## 📝 License
+MIT License - Student Project by **Hanan Qaisar**

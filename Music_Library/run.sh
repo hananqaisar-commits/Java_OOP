@@ -1,6 +1,5 @@
 #!/bin/bash
+# PWD: Music_Library
 
-javac -d src/out src/*.java
-java -cp src/out Main
-
-
+mvn clean compile -q
+mvn exec:java -Dexec.mainClass="com.musiclibrary.Main" -q
